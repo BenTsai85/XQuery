@@ -115,18 +115,6 @@ public interface XQueryListener extends ParseTreeListener {
 	 */
 	void exitRpPrev(XQueryParser.RpPrevContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code rpAtt}
-	 * labeled alternative in {@link XQueryParser#rp}.
-	 * @param ctx the parse tree
-	 */
-	void enterRpAtt(XQueryParser.RpAttContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code rpAtt}
-	 * labeled alternative in {@link XQueryParser#rp}.
-	 * @param ctx the parse tree
-	 */
-	void exitRpAtt(XQueryParser.RpAttContext ctx);
-	/**
 	 * Enter a parse tree produced by the {@code rpParentheses}
 	 * labeled alternative in {@link XQueryParser#rp}.
 	 * @param ctx the parse tree
@@ -138,18 +126,6 @@ public interface XQueryListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRpParentheses(XQueryParser.RpParenthesesContext ctx);
-	/**
-	 * Enter a parse tree produced by the {@code rpDoubleSlah}
-	 * labeled alternative in {@link XQueryParser#rp}.
-	 * @param ctx the parse tree
-	 */
-	void enterRpDoubleSlah(XQueryParser.RpDoubleSlahContext ctx);
-	/**
-	 * Exit a parse tree produced by the {@code rpDoubleSlah}
-	 * labeled alternative in {@link XQueryParser#rp}.
-	 * @param ctx the parse tree
-	 */
-	void exitRpDoubleSlah(XQueryParser.RpDoubleSlahContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code rpSquare}
 	 * labeled alternative in {@link XQueryParser#rp}.
@@ -174,6 +150,30 @@ public interface XQueryListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitRpWildcard(XQueryParser.RpWildcardContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code rpAttribute}
+	 * labeled alternative in {@link XQueryParser#rp}.
+	 * @param ctx the parse tree
+	 */
+	void enterRpAttribute(XQueryParser.RpAttributeContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code rpAttribute}
+	 * labeled alternative in {@link XQueryParser#rp}.
+	 * @param ctx the parse tree
+	 */
+	void exitRpAttribute(XQueryParser.RpAttributeContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code rpDoubleSlash}
+	 * labeled alternative in {@link XQueryParser#rp}.
+	 * @param ctx the parse tree
+	 */
+	void enterRpDoubleSlash(XQueryParser.RpDoubleSlashContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code rpDoubleSlash}
+	 * labeled alternative in {@link XQueryParser#rp}.
+	 * @param ctx the parse tree
+	 */
+	void exitRpDoubleSlash(XQueryParser.RpDoubleSlashContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code fRelativePath}
 	 * labeled alternative in {@link XQueryParser#f}.

@@ -123,18 +123,6 @@ public class XQueryBaseListener implements XQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRpAtt(XQueryParser.RpAttContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRpAtt(XQueryParser.RpAttContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterRpParentheses(XQueryParser.RpParenthesesContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -142,18 +130,6 @@ public class XQueryBaseListener implements XQueryListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitRpParentheses(XQueryParser.RpParenthesesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRpDoubleSlah(XQueryParser.RpDoubleSlahContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRpDoubleSlah(XQueryParser.RpDoubleSlahContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -178,6 +154,30 @@ public class XQueryBaseListener implements XQueryListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitRpWildcard(XQueryParser.RpWildcardContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRpAttribute(XQueryParser.RpAttributeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRpAttribute(XQueryParser.RpAttributeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRpDoubleSlash(XQueryParser.RpDoubleSlashContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRpDoubleSlash(XQueryParser.RpDoubleSlashContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

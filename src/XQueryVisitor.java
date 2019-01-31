@@ -73,26 +73,12 @@ public interface XQueryVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRpPrev(XQueryParser.RpPrevContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code rpAtt}
-	 * labeled alternative in {@link XQueryParser#rp}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRpAtt(XQueryParser.RpAttContext ctx);
-	/**
 	 * Visit a parse tree produced by the {@code rpParentheses}
 	 * labeled alternative in {@link XQueryParser#rp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitRpParentheses(XQueryParser.RpParenthesesContext ctx);
-	/**
-	 * Visit a parse tree produced by the {@code rpDoubleSlah}
-	 * labeled alternative in {@link XQueryParser#rp}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitRpDoubleSlah(XQueryParser.RpDoubleSlahContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code rpSquare}
 	 * labeled alternative in {@link XQueryParser#rp}.
@@ -107,6 +93,20 @@ public interface XQueryVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitRpWildcard(XQueryParser.RpWildcardContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code rpAttribute}
+	 * labeled alternative in {@link XQueryParser#rp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRpAttribute(XQueryParser.RpAttributeContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code rpDoubleSlash}
+	 * labeled alternative in {@link XQueryParser#rp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitRpDoubleSlash(XQueryParser.RpDoubleSlashContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code fRelativePath}
 	 * labeled alternative in {@link XQueryParser#f}.

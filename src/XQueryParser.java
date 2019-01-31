@@ -369,23 +369,6 @@ public class XQueryParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class RpAttContext extends RpContext {
-		public TerminalNode Identifier() { return getToken(XQueryParser.Identifier, 0); }
-		public RpAttContext(RpContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).enterRpAtt(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).exitRpAtt(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XQueryVisitor ) return ((XQueryVisitor<? extends T>)visitor).visitRpAtt(this);
-			else return visitor.visitChildren(this);
-		}
-	}
 	public static class RpParenthesesContext extends RpContext {
 		public RpContext rp() {
 			return getRuleContext(RpContext.class,0);
@@ -402,28 +385,6 @@ public class XQueryParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof XQueryVisitor ) return ((XQueryVisitor<? extends T>)visitor).visitRpParentheses(this);
-			else return visitor.visitChildren(this);
-		}
-	}
-	public static class RpDoubleSlahContext extends RpContext {
-		public List<RpContext> rp() {
-			return getRuleContexts(RpContext.class);
-		}
-		public RpContext rp(int i) {
-			return getRuleContext(RpContext.class,i);
-		}
-		public RpDoubleSlahContext(RpContext ctx) { copyFrom(ctx); }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).enterRpDoubleSlah(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).exitRpDoubleSlah(this);
-		}
-		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XQueryVisitor ) return ((XQueryVisitor<? extends T>)visitor).visitRpDoubleSlah(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -462,6 +423,45 @@ public class XQueryParser extends Parser {
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 			if ( visitor instanceof XQueryVisitor ) return ((XQueryVisitor<? extends T>)visitor).visitRpWildcard(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class RpAttributeContext extends RpContext {
+		public TerminalNode Identifier() { return getToken(XQueryParser.Identifier, 0); }
+		public RpAttributeContext(RpContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).enterRpAttribute(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).exitRpAttribute(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof XQueryVisitor ) return ((XQueryVisitor<? extends T>)visitor).visitRpAttribute(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+	public static class RpDoubleSlashContext extends RpContext {
+		public List<RpContext> rp() {
+			return getRuleContexts(RpContext.class);
+		}
+		public RpContext rp(int i) {
+			return getRuleContext(RpContext.class,i);
+		}
+		public RpDoubleSlashContext(RpContext ctx) { copyFrom(ctx); }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).enterRpDoubleSlash(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).exitRpDoubleSlash(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof XQueryVisitor ) return ((XQueryVisitor<? extends T>)visitor).visitRpDoubleSlash(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -532,7 +532,7 @@ public class XQueryParser extends Parser {
 				break;
 			case T__8:
 				{
-				_localctx = new RpAttContext(_localctx);
+				_localctx = new RpAttributeContext(_localctx);
 				_ctx = _localctx;
 				_prevctx = _localctx;
 				setState(28);
@@ -583,7 +583,7 @@ public class XQueryParser extends Parser {
 						break;
 					case 2:
 						{
-						_localctx = new RpDoubleSlahContext(new RpContext(_parentctx, _parentState));
+						_localctx = new RpDoubleSlashContext(new RpContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_rp);
 						setState(39);
 						if (!(precpred(_ctx, 3))) throw new FailedPredicateException(this, "precpred(_ctx, 3)");

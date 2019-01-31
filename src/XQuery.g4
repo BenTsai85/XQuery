@@ -12,10 +12,10 @@ rp  : Identifier            #rpTag
     | '.'                   #rpCurr
     | '..'                  #rpPrev
     | 'text()'              #rpText
-    | '@' Identifier        #rpAtt
+    | '@' Identifier        #rpAttribute
     | '(' rp ')'            #rpParentheses
     | rp '/' rp             #rpSingleSlash
-    | rp '//' rp            #rpDoubleSlah
+    | rp '//' rp            #rpDoubleSlash
     | rp '[' f ']'          #rpSquare
     | rp ',' rp             #rpPair
     ;
