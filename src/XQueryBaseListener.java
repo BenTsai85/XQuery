@@ -15,37 +15,37 @@ public class XQueryBaseListener implements XQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterApChildren(XQueryParser.ApChildrenContext ctx) { }
+	@Override public void enterApSingleSlash(XQueryParser.ApSingleSlashContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitApChildren(XQueryParser.ApChildrenContext ctx) { }
+	@Override public void exitApSingleSlash(XQueryParser.ApSingleSlashContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterApAll(XQueryParser.ApAllContext ctx) { }
+	@Override public void enterApDoubleSlash(XQueryParser.ApDoubleSlashContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitApAll(XQueryParser.ApAllContext ctx) { }
+	@Override public void exitApDoubleSlash(XQueryParser.ApDoubleSlashContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterApDoc(XQueryParser.ApDocContext ctx) { }
+	@Override public void enterDocName(XQueryParser.DocNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitApDoc(XQueryParser.ApDocContext ctx) { }
+	@Override public void exitDocName(XQueryParser.DocNameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -75,13 +75,25 @@ public class XQueryBaseListener implements XQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRpChildren(XQueryParser.RpChildrenContext ctx) { }
+	@Override public void enterRpSingleSlash(XQueryParser.RpSingleSlashContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRpChildren(XQueryParser.RpChildrenContext ctx) { }
+	@Override public void exitRpSingleSlash(XQueryParser.RpSingleSlashContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRpCurr(XQueryParser.RpCurrContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRpCurr(XQueryParser.RpCurrContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -99,13 +111,25 @@ public class XQueryBaseListener implements XQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRpParent(XQueryParser.RpParentContext ctx) { }
+	@Override public void enterRpPrev(XQueryParser.RpPrevContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRpParent(XQueryParser.RpParentContext ctx) { }
+	@Override public void exitRpPrev(XQueryParser.RpPrevContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterRpAtt(XQueryParser.RpAttContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitRpAtt(XQueryParser.RpAttContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -123,37 +147,25 @@ public class XQueryBaseListener implements XQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRpAll(XQueryParser.RpAllContext ctx) { }
+	@Override public void enterRpDoubleSlah(XQueryParser.RpDoubleSlahContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRpAll(XQueryParser.RpAllContext ctx) { }
+	@Override public void exitRpDoubleSlah(XQueryParser.RpDoubleSlahContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRpCurrent(XQueryParser.RpCurrentContext ctx) { }
+	@Override public void enterRpSquare(XQueryParser.RpSquareContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRpCurrent(XQueryParser.RpCurrentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterRpFilter(XQueryParser.RpFilterContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRpFilter(XQueryParser.RpFilterContext ctx) { }
+	@Override public void exitRpSquare(XQueryParser.RpSquareContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -171,18 +183,6 @@ public class XQueryBaseListener implements XQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRpAttribute(XQueryParser.RpAttributeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitRpAttribute(XQueryParser.RpAttributeContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterFRelativePath(XQueryParser.FRelativePathContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -195,6 +195,18 @@ public class XQueryBaseListener implements XQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterFEqual(XQueryParser.FEqualContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFEqual(XQueryParser.FEqualContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterFNot(XQueryParser.FNotContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -202,6 +214,18 @@ public class XQueryBaseListener implements XQueryListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFNot(XQueryParser.FNotContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFSame(XQueryParser.FSameContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFSame(XQueryParser.FSameContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -226,30 +250,6 @@ public class XQueryBaseListener implements XQueryListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitFOr(XQueryParser.FOrContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFIdentityEquality(XQueryParser.FIdentityEqualityContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFIdentityEquality(XQueryParser.FIdentityEqualityContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterFValueEquality(XQueryParser.FValueEqualityContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFValueEquality(XQueryParser.FValueEqualityContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

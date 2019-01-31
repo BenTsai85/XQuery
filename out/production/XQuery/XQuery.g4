@@ -1,54 +1,44 @@
-// XPath grammar
 grammar XQuery;
 
-
-// Absolute path
-ap
-    : doc '/' rp                                           # apChildren
-    | doc '//' rp                                          # apAll
+ap  : doc '/' rp            #apSingleSlash
+    | doc '//' rp           #apDoubleSlash
     ;
 
-// Document
-doc
-    : 'doc(' StringConstant ')'          # apDoc
+doc : 'doc(' FILENAME ')'   #docName
     ;
 
-// Relative Path
-rp
-    : Identifier                                           # rpTag
-    | '*'                                                  # rpWildcard
-    | '.'                                                  # rpCurrent
-    | '..'                                                 # rpParent
-    | 'text()'                                             # rpText
-    | '@' Identifier                                       # rpAttribute
-    | '(' rp ')'                                           # rpParentheses
-    | rp '/' rp                                            # rpChildren
-    | rp '//' rp                                           # rpAll
-    | rp '[' f ']'                                         # rpFilter
-    | rp ',' rp                                            # rpPair
+rp  : Identifier            #rpTag
+    | '*'                   #rpWildcard
+    | '.'                   #rpCurr
+    | '..'                  #rpPrev
+    | 'text()'              #rpText
+    | '@' Identifier        #rpAtt
+    | '(' rp ')'            #rpParentheses
+    | rp '/' rp             #rpSingleSlash
+    | rp '//' rp            #rpDoubleSlah
+    | rp '[' f ']'          #rpSquare
+    | rp ',' rp             #rpPair
     ;
 
-// Path Filter
-f
-    : rp                                                   # fRelativePath
-    | rp ('=' | 'eq') rp                                   # fValueEquality
-    | rp ('==' | 'is') rp                                  # fIdentityEquality
-    | '(' f ')'                                            # fParentheses
-    | f 'and' f                                            # fAnd
-    | f 'or' f                                             # fOr
-    | 'not' f                                              # fNot
+f   : rp                    #fRelativePath
+    | rp ('=' | 'eq')       #fEqual
+    | rp ('==' | 'is' )     #fSame
+    | '(' f ')'             #fParentheses
+    | f 'and' f             #fAnd
+    | f 'or' f              #fOr
+    | 'not' f               #fNot
     ;
 
-// File Name, Literal
-StringConstant: '"' (~'"')* '"';
 
-// Identifier
+FILENAME: '"' (~'"')* '"';
+
 Identifier: Letter (Letter | Digit | '-')*;
 
-// Basic Fragments
 fragment Letter: [a-zA-Z];
 
 fragment Digit: [0-9];
 
 // Ignore White Space
 WhiteSpace: [ \n\t\r]+ -> skip;
+
+
