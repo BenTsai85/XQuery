@@ -40,5 +40,3 @@ fragment Digit: [0-9];
 
 // Ignore White Space
 WhiteSpace: [ \n\t\r]+ -> skip;
-
-

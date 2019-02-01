@@ -13,11 +13,10 @@ public class Main {
         String inputString = scanner.nextLine();
         */
 
-        /*
-        "doc(\"j_caesar.xml\")/PLAY/FM/*"
-
+        /* For Test
+        doc("j_caesar.xml")/PLAY/TITLE/text()
          */
-        String inputString = "doc(\"j_caesar.xml\")/PLAY/FM/*";
+        String inputString = "doc(\"j_caesar.xml\")/PLAY/TITLE/text()";
         System.out.print(inputString + "\n");
 
         XQueryLexer lexer = new XQueryLexer(CharStreams.fromString(inputString));
@@ -28,8 +27,15 @@ public class Main {
 
         MyXQueryVisitor myVisitor = new MyXQueryVisitor();
         LinkedList<Node> nodes = myVisitor.visit(tree);
-        for (Node n : nodes) {
-            System.out.println(n.toString());
+
+        System.out.println("Result:\n");
+        if (nodes != null) {
+            for (Node n : nodes) {
+                System.out.println(n.toString());
+            }
+        }
+        else {
+            System.out.println("error");
         }
 
     }

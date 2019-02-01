@@ -29,14 +29,33 @@ public class Helper {
         return nodes;
 
     }
+
+    public static LinkedList<Node> txt(Node n) {
+        System.out.println("func: txt\n");
+        return Helper.children(n);
+    }
+
+    public static LinkedList<Node> children(Node n) {
+        // NodeList -> LinkedList<Node>
+        LinkedList<Node> nodes = new LinkedList<>();
+        for (int i = 0; i < n.getChildNodes().getLength(); ++i) {
+            //System.out.println(n.getChildNodes().item(i).toString());
+            nodes.add(n.getChildNodes().item(i));
+        }
+        return nodes;
+    }
+
+    public static String tag(Node n) {
+        return n.getNodeName();
+    }
     /*
     [ap]A
     [rp]R(n)
     [f ]F (n)
-    root(fn)
-    children(n)   the list of children of element node n, ordered according to the document order
+    root(fn)       v
+    children(n)    v
     parent(n)
-    tag(n)
-    txt(n)
+    tag(n)         v
+    txt(n)         v
     */
 }
