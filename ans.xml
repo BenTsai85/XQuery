@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><ele><root>
+    <all>
+        <actors>
+            <actor id="1">Christian Bale</actor>
+            <actor id="2">Liam Neeson</actor>
+            <actor id="3">Michael Caine</actor>
+        </actors>
+        <singers>
+            <foo id="4">Tom Waits</foo>
+            <foo id="5">B.B. King</foo>
+            <foo id="6">Ray Charles</foo>
+        </singers>
+    </all>
+</root>
+    <all>
+        <actors>
+            <actor id="1">Christian Bale</actor>
+            <actor id="2">Liam Neeson</actor>
+            <actor id="3">Michael Caine</actor>
+        </actors>
+        <singers>
+            <foo id="4">Tom Waits</foo>
+            <foo id="5">B.B. King</foo>
+            <foo id="6">Ray Charles</foo>
+        </singers>
+    </all>
+
+        <actors>
+            <actor id="1">Christian Bale</actor>
+            <actor id="2">Liam Neeson</actor>
+            <actor id="3">Michael Caine</actor>
+        </actors>
+        <singers>
+            <foo id="4">Tom Waits</foo>
+            <foo id="5">B.B. King</foo>
+            <foo id="6">Ray Charles</foo>
+        </singers>
+    
+            <actor id="1">Christian Bale</actor>
+            <actor id="2">Liam Neeson</actor>
+            <actor id="3">Michael Caine</actor>
+        
+            <foo id="4">Tom Waits</foo>
+            <foo id="5">B.B. King</foo>
+            <foo id="6">Ray Charles</foo>
+        Christian BaleLiam NeesonMichael CaineTom WaitsB.B. KingRay Charles</ele>

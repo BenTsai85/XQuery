@@ -11,7 +11,7 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
 
     @Override
     public LinkedList<Node> visitApSingleSlash(XQueryParser.ApSingleSlashContext ctx) {
-        System.out.println("single slash\n");
+        System.out.println("/");
         visit(ctx.doc());
         this.nodes = visit(ctx.rp());
         return this.nodes;
@@ -19,23 +19,24 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
 
     @Override
     public LinkedList<Node> visitApDoubleSlash(XQueryParser.ApDoubleSlashContext ctx) {
-        System.out.println("double slash\n");
+        System.out.println("//");
         visit(ctx.doc());
         this.nodes = Helper.descOrSelf(this.nodes);
+        //this.nodes = Helper.descOrSelf(visit(ctx.doc()));
         this.nodes = visit(ctx.rp());
         return this.nodes;
     }
 
     @Override
     public LinkedList<Node> visitDocName(XQueryParser.DocNameContext ctx) {
-        System.out.println("doc name\n");
+        System.out.println("read" + ctx.FILENAME().getText());
         this.nodes = Helper.root(ctx.FILENAME().getText());
         return this.nodes;
     }
 
     @Override
     public LinkedList<Node> visitRpWildcard(XQueryParser.RpWildcardContext ctx) {
-        System.out.println("rp *\n");
+        System.out.println("*");
         LinkedList<Node> nodes = new LinkedList<>();
         for (Node n : this.nodes) {
             nodes.addAll(Helper.children(n));
@@ -46,7 +47,7 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
 
     @Override
     public LinkedList<Node> visitRpSingleSlash(XQueryParser.RpSingleSlashContext ctx) {
-        System.out.println("rp single slash\n");
+        System.out.println("/");
         // since RpSingleSlash must have two children, first visited left one, then right one
         visit(ctx.rp(0));
         this.nodes = visit(ctx.rp(1));
@@ -55,7 +56,7 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
 
     @Override
     public LinkedList<Node> visitRpText(XQueryParser.RpTextContext ctx) {
-        System.out.println("rp text()\n");
+        System.out.println("text()");
         LinkedList<Node> nodes = new LinkedList<>();
 
         for (Node n : this.nodes) {
@@ -68,7 +69,7 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
 
     @Override
     public LinkedList<Node> visitRpTag(XQueryParser.RpTagContext ctx) {
-        System.out.println("rp tagName\n");
+        System.out.println("tagName");
         LinkedList<Node> nodes = new LinkedList<>();
         for (Node n : this.nodes) {
             LinkedList<Node> leaf = Helper.children(n);

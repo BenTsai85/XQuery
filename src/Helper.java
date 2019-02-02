@@ -10,7 +10,7 @@ public class Helper {
     // read xml file  (https://www.tutorialspoint.com/java_xml/java_dom_parse_document.htm)
     public static LinkedList<Node> root(String file_name) {
         LinkedList<Node> nodes = new LinkedList<>();
-        System.out.println("try read xml file\n");
+        System.out.println("try read xml file");
 
         try {
             File xml = new File(file_name.substring(1, file_name.length() - 1));
@@ -21,7 +21,7 @@ public class Helper {
             Document doc = docBuilder.parse(xml);
             doc.getDocumentElement().normalize();
             nodes.add(doc);
-            System.out.println("read xml file\n");
+            System.out.println("read xml file");
 
         } catch (Exception e) {
             System.out.println("can't read xml file\n");
