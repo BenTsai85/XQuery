@@ -7,6 +7,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 public class Helper {
 
     // root(fn)
+    // read xml file  (https://www.tutorialspoint.com/java_xml/java_dom_parse_document.htm)
     public static LinkedList<Node> root(String file_name) {
         LinkedList<Node> nodes = new LinkedList<>();
         System.out.println("try read xml file\n");
@@ -30,11 +31,27 @@ public class Helper {
 
     }
 
+    // return all children and given nodes
+    public static LinkedList<Node> descOrSelf(LinkedList<Node> roots) {
+        System.out.println("find all descendants");
+        LinkedList<Node> nodes = (LinkedList) roots.clone(), res = (LinkedList) roots.clone();
+
+        while (!res.isEmpty()) {
+            Node n = res.pollFirst();
+            LinkedList<Node> children = Helper.children(n);
+            res.addAll(children);
+            nodes.addAll(children);
+        }
+        return nodes;
+    }
+
+    // the text node associated to element node n
     public static LinkedList<Node> txt(Node n) {
         System.out.println("func: txt\n");
         return Helper.children(n);
     }
 
+    // the list of children of element node n, ordered according to the document order
     public static LinkedList<Node> children(Node n) {
         // NodeList -> LinkedList<Node>
         LinkedList<Node> nodes = new LinkedList<>();
@@ -45,6 +62,7 @@ public class Helper {
         return nodes;
     }
 
+    // the tag labeling element node n
     public static String tag(Node n) {
         return n.getNodeName();
     }

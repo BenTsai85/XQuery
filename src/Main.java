@@ -13,10 +13,13 @@ public class Main {
         String inputString = scanner.nextLine();
         */
 
-        /* For Test
+        /* For Test (inputString example)
         doc("j_caesar.xml")/PLAY/TITLE/text()
+        doc("j_caesar.xml")//text()
+        doc("j_caesar.xml")/PLAY/../PLAY/TITLE/text()
+        doc("test.xml")//all/*
          */
-        String inputString = "doc(\"j_caesar.xml\")/PLAY/TITLE/text()";
+        String inputString = "doc(\"test.xml\")//all/*";
         System.out.print(inputString + "\n");
 
         XQueryLexer lexer = new XQueryLexer(CharStreams.fromString(inputString));
@@ -30,6 +33,7 @@ public class Main {
 
         System.out.println("Result:\n");
         if (nodes != null) {
+            System.out.println(nodes.size());
             for (Node n : nodes) {
                 System.out.println(n.toString());
             }

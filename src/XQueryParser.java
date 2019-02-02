@@ -388,25 +388,25 @@ public class XQueryParser extends Parser {
 			else return visitor.visitChildren(this);
 		}
 	}
-	public static class RpSquareContext extends RpContext {
+	public static class RpFilterContext extends RpContext {
 		public RpContext rp() {
 			return getRuleContext(RpContext.class,0);
 		}
 		public FContext f() {
 			return getRuleContext(FContext.class,0);
 		}
-		public RpSquareContext(RpContext ctx) { copyFrom(ctx); }
+		public RpFilterContext(RpContext ctx) { copyFrom(ctx); }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).enterRpSquare(this);
+			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).enterRpFilter(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).exitRpSquare(this);
+			if ( listener instanceof XQueryListener ) ((XQueryListener)listener).exitRpFilter(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof XQueryVisitor ) return ((XQueryVisitor<? extends T>)visitor).visitRpSquare(this);
+			if ( visitor instanceof XQueryVisitor ) return ((XQueryVisitor<? extends T>)visitor).visitRpFilter(this);
 			else return visitor.visitChildren(this);
 		}
 	}
@@ -607,7 +607,7 @@ public class XQueryParser extends Parser {
 						break;
 					case 4:
 						{
-						_localctx = new RpSquareContext(new RpContext(_parentctx, _parentState));
+						_localctx = new RpFilterContext(new RpContext(_parentctx, _parentState));
 						pushNewRecursionContext(_localctx, _startState, RULE_rp);
 						setState(45);
 						if (!(precpred(_ctx, 2))) throw new FailedPredicateException(this, "precpred(_ctx, 2)");

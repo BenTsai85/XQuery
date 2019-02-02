@@ -16,7 +16,7 @@ rp  : Identifier            #rpTag
     | '(' rp ')'            #rpParentheses
     | rp '/' rp             #rpSingleSlash
     | rp '//' rp            #rpDoubleSlash
-    | rp '[' f ']'          #rpSquare
+    | rp '[' f ']'          #rpFilter
     | rp ',' rp             #rpPair
     ;
 

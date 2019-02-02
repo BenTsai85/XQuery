@@ -127,17 +127,17 @@ public interface XQueryListener extends ParseTreeListener {
 	 */
 	void exitRpParentheses(XQueryParser.RpParenthesesContext ctx);
 	/**
-	 * Enter a parse tree produced by the {@code rpSquare}
+	 * Enter a parse tree produced by the {@code rpFilter}
 	 * labeled alternative in {@link XQueryParser#rp}.
 	 * @param ctx the parse tree
 	 */
-	void enterRpSquare(XQueryParser.RpSquareContext ctx);
+	void enterRpFilter(XQueryParser.RpFilterContext ctx);
 	/**
-	 * Exit a parse tree produced by the {@code rpSquare}
+	 * Exit a parse tree produced by the {@code rpFilter}
 	 * labeled alternative in {@link XQueryParser#rp}.
 	 * @param ctx the parse tree
 	 */
-	void exitRpSquare(XQueryParser.RpSquareContext ctx);
+	void exitRpFilter(XQueryParser.RpFilterContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code rpWildcard}
 	 * labeled alternative in {@link XQueryParser#rp}.

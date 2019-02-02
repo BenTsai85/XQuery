@@ -18,9 +18,29 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
     }
 
     @Override
+    public LinkedList<Node> visitApDoubleSlash(XQueryParser.ApDoubleSlashContext ctx) {
+        System.out.println("double slash\n");
+        visit(ctx.doc());
+        this.nodes = Helper.descOrSelf(this.nodes);
+        this.nodes = visit(ctx.rp());
+        return this.nodes;
+    }
+
+    @Override
     public LinkedList<Node> visitDocName(XQueryParser.DocNameContext ctx) {
         System.out.println("doc name\n");
         this.nodes = Helper.root(ctx.FILENAME().getText());
+        return this.nodes;
+    }
+
+    @Override
+    public LinkedList<Node> visitRpWildcard(XQueryParser.RpWildcardContext ctx) {
+        System.out.println("rp *\n");
+        LinkedList<Node> nodes = new LinkedList<>();
+        for (Node n : this.nodes) {
+            nodes.addAll(Helper.children(n));
+        }
+        this.nodes = nodes;
         return this.nodes;
     }
 
@@ -40,10 +60,7 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
 
         for (Node n : this.nodes) {
             //System.out.println(n.toString());
-            LinkedList<Node> tmp = Helper.txt(n);
-            for (Node t : tmp) {
-                nodes.add(t);
-            }
+            nodes.addAll(Helper.txt(n));
         }
         this.nodes = nodes;
         return this.nodes;

@@ -80,12 +80,12 @@ public interface XQueryVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitRpParentheses(XQueryParser.RpParenthesesContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code rpSquare}
+	 * Visit a parse tree produced by the {@code rpFilter}
 	 * labeled alternative in {@link XQueryParser#rp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitRpSquare(XQueryParser.RpSquareContext ctx);
+	T visitRpFilter(XQueryParser.RpFilterContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code rpWildcard}
 	 * labeled alternative in {@link XQueryParser#rp}.

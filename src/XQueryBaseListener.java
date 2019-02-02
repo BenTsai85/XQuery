@@ -135,13 +135,13 @@ public class XQueryBaseListener implements XQueryListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterRpSquare(XQueryParser.RpSquareContext ctx) { }
+	@Override public void enterRpFilter(XQueryParser.RpFilterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitRpSquare(XQueryParser.RpSquareContext ctx) { }
+	@Override public void exitRpFilter(XQueryParser.RpFilterContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
