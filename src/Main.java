@@ -26,9 +26,10 @@ public class Main {
         doc("j_caesar.xml")//text()
         doc("j_caesar.xml")/PLAY/../PLAY/TITLE/text()
         doc("test.xml")//*
+        doc("test.xml")/root/all/../all/actors
+        doc("test.xml")/root/all/actors/actor[@id = "a"] <- exist ? fail ?
          */
-        String inputString = "doc(\"test.xml\")//*";
-        //System.out.print(inputString + "\n");
+        String inputString = "doc(\"test.xml\")/root/all/actors/actor[@id]";
 
         XQueryLexer lexer = new XQueryLexer(CharStreams.fromString(inputString));
         CommonTokenStream tokens = new CommonTokenStream(lexer);

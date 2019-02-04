@@ -21,8 +21,8 @@ rp  : Identifier            #rpTag
     ;
 
 f   : rp                    #fRelativePath
-    | rp ('=' | 'eq')       #fEqual
-    | rp ('==' | 'is' )     #fSame
+    | rp ('=' | 'eq') rp    #fEqual
+    | rp ('==' | 'is' ) rp  #fSame
     | '(' f ')'             #fParentheses
     | f 'and' f             #fAnd
     | f 'or' f              #fOr

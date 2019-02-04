@@ -1,9 +1,9 @@
 <root>
     <all>
         <actors>
-            <actor id="1">Christian Bale</actor>
-            <actor id="2">Liam Neeson</actor>
-            <actor id="3">Michael Caine</actor>
+            <actor id="a">Christian Bale</actor>
+            <actor id="b">Liam Neeson</actor>
+            <actor index="c">Michael Caine</actor>
         </actors>
         <singers>
             <foo id="4">Tom Waits</foo>

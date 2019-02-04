@@ -15,7 +15,6 @@ public class Helper {
         try {
             File xml = new File(file_name.substring(1, file_name.length() - 1));
             DocumentBuilderFactory docFactory = DocumentBuilderFactory.newInstance();
-            // Ignore non-relevant whitespace (only works if the XML has an associated DTD)
             docFactory.setIgnoringElementContentWhitespace(true);
             DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
             Document doc = docBuilder.parse(xml);
@@ -48,6 +47,7 @@ public class Helper {
     // the text node associated to element node n
     public static LinkedList<Node> txt(Node n) {
         System.out.println("func: txt\n");
+        // text node ???
         return Helper.children(n);
     }
 
@@ -62,6 +62,11 @@ public class Helper {
         return nodes;
     }
 
+    public static Node parent(Node n) {
+        // attribute node ???
+        return n.getParentNode();
+    }
+
     // the tag labeling element node n
     public static String tag(Node n) {
         return n.getNodeName();
@@ -72,7 +77,7 @@ public class Helper {
     [f ]F (n)
     root(fn)       v
     children(n)    v
-    parent(n)
+    parent(n)      v
     tag(n)         v
     txt(n)         v
     */
