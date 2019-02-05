@@ -1,12 +1,12 @@
 <root>
     <actors>
-        <actor id="a" index="d">Christian Bale</actor>
-        <actor id="b">Liam Neeson</actor>
-        <actor id="c" index="e">Michael Caine</actor>
+        <actor id="a" index="d">Bale</actor>
+        <actor id="b">Neeson</actor>
+        <actor id="a" index="d">Bale</actor>
     </actors>
     <singers>
-        <foo id="4">Tom Waits</foo>
-        <foo id="5">B.B. King</foo>
-        <foo id="6">Ray Charles</foo>
+        <actor id="4" index="e">Waits</actor>
+        <foo id="5">King</foo>
+        <foo id="6">Charles</foo>
     </singers>
 </root>

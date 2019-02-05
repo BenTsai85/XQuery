@@ -16,11 +16,6 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) {
-        /* define input by console
-        Scanner scanner = new Scanner(System.in);
-        String inputString = scanner.nextLine();
-        */
-
         /* For Test (inputString example)
         doc("j_caesar.xml")/PLAY/TITLE/text()
         doc("j_caesar.xml")//text()
@@ -31,7 +26,9 @@ public class Main {
         doc("test.xml")/root/actors/actor[@id and @index]
         doc(\"test.xml\")/root/actors/actor[@id], root/singers
          */
-        String inputString = "doc(\"test.xml\")/root/actors/actor[@id=@index]";
+        // still get some problems with visitor rule 15, 16
+
+        String inputString = "doc(\"j_caesar.xml\")//(ACT,PERSONAE)/TITLE";
 
         XQueryLexer lexer = new XQueryLexer(CharStreams.fromString(inputString));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -42,18 +39,6 @@ public class Main {
         MyXQueryVisitor myVisitor = new MyXQueryVisitor();
         LinkedList<Node> nodes = myVisitor.visit(tree);
 
-        /*
-        System.out.println("Result:\n");
-        if (nodes != null) {
-            System.out.println(nodes.size());
-            for (Node n : nodes) {
-                System.out.println(n.toString());
-            }
-        }
-        else {
-            System.out.println("error");
-        }
-        */
 
         // save file
         writeToFile(nodes, "ans.xml");

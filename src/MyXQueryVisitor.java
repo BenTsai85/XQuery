@@ -3,9 +3,8 @@ import java.util.LinkedList;
 
 // define the meaning of an XPath expression.
 public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
-    /* Not done:
-    11, 15, 16
-    */
+
+
     private LinkedList<Node> nodes;
 
     public MyXQueryVisitor() {
@@ -24,8 +23,16 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
     public LinkedList<Node> visitApDoubleSlash(XQueryParser.ApDoubleSlashContext ctx) {
         System.out.println("//"); // rule 2
         visit(ctx.doc());
-        this.nodes = Helper.descOrSelf(this.nodes);
-        //this.nodes = Helper.descOrSelf(visit(ctx.doc()));
+
+        // find all descOrSelf
+        LinkedList<Node> res = (LinkedList) this.nodes.clone();
+        while (!res.isEmpty()) {
+            Node n = res.pollFirst();
+            LinkedList<Node> children = Helper.children(n);
+            res.addAll(children);
+            this.nodes.addAll(children);
+        }
+
         this.nodes = visit(ctx.rp());
         return this.nodes;
     }
@@ -120,10 +127,30 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
     public LinkedList<Node> visitRpSingleSlash(XQueryParser.RpSingleSlashContext ctx) {
         System.out.println("/"); // rule 10
         // since RpSingleSlash must have two children, first visited left one, then right one
+
         visit(ctx.rp(0));
-        this.nodes = visit(ctx.rp(1));
+        this.nodes = Helper.unique(visit(ctx.rp(1)));
         return this.nodes;
     }
+
+    @Override
+    public LinkedList<Node> visitRpDoubleSlash(XQueryParser.RpDoubleSlashContext ctx) {
+        System.out.println("//"); // rule 11
+        visit(ctx.rp(0));
+
+        // find all descOrSelf
+        LinkedList<Node> res = (LinkedList) this.nodes.clone();
+        while (!res.isEmpty()) {
+            Node n = res.pollFirst();
+            LinkedList<Node> children = Helper.children(n);
+            this.nodes.addAll(children);
+            res.addAll(children);
+        }
+
+        this.nodes = Helper.unique(visit(ctx.rp(1)));
+        return this.nodes;
+    }
+
 
     @Override
     public LinkedList<Node> visitRpFilter(XQueryParser.RpFilterContext ctx) {
@@ -199,36 +226,38 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
         return new LinkedList<>();
     }
 
-
-    // still get some problems with rule 15, 16
-
     @Override
     public LinkedList<Node> visitFEqual(XQueryParser.FEqualContext ctx) {
+        // this is wrong !
+
         System.out.println("f: eq(=)"); // rule 15
-        LinkedList<Node> preStatus = this.nodes;
+        LinkedList<Node> preStatus = (LinkedList) this.nodes.clone();
         LinkedList<Node> left, right;
-        LinkedList<Node> ndoes = new LinkedList<>();
+        LinkedList<Node> nodes = new LinkedList<>();
         left = visit(ctx.rp(0));
         this.nodes = preStatus;
         right = visit(ctx.rp(1));
         for (Node ln : left) {
             for (Node rn : right) {
+                System.out.println(ln.toString() + "???" + rn.toString());
                 if (ln.isEqualNode(rn)) {
+                    System.out.println("equal!");
                     nodes.add(ln);
                 }
             }
         }
 
-        return this.nodes;
+        return nodes;
     }
 
 
     @Override
     public LinkedList<Node> visitFSame(XQueryParser.FSameContext ctx) {
+        // this is wrong !
+
         System.out.println("f: is(==)"); // rule 16
         LinkedList<Node> preStatus = this.nodes;
-        LinkedList<Node> left, right;
-        LinkedList<Node> ndoes = new LinkedList<>();
+        LinkedList<Node> left, right, nodes = new LinkedList<>();
         left = visit(ctx.rp(0));
         this.nodes = preStatus;
         right = visit(ctx.rp(1));
@@ -240,7 +269,7 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
             }
         }
 
-        return this.nodes;
+        return nodes;
     }
 
 

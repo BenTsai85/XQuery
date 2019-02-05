@@ -10,7 +10,6 @@ public class Helper {
     // read xml file  (https://www.tutorialspoint.com/java_xml/java_dom_parse_document.htm)
     public static LinkedList<Node> root(String file_name) {
         LinkedList<Node> nodes = new LinkedList<>();
-        System.out.println("try read xml file");
 
         try {
             File xml = new File(file_name.substring(1, file_name.length() - 1));
@@ -20,7 +19,6 @@ public class Helper {
             Document doc = docBuilder.parse(xml);
             doc.getDocumentElement().normalize();
             nodes.add(doc);
-            System.out.println("read xml file");
 
         } catch (Exception e) {
             System.out.println("can't read xml file\n");
@@ -28,27 +26,6 @@ public class Helper {
         }
         return nodes;
 
-    }
-
-    // return all children and given nodes
-    public static LinkedList<Node> descOrSelf(LinkedList<Node> roots) {
-        System.out.println("find all descendants");
-        LinkedList<Node> nodes = (LinkedList) roots.clone(), res = (LinkedList) roots.clone();
-
-        while (!res.isEmpty()) {
-            Node n = res.pollFirst();
-            LinkedList<Node> children = Helper.children(n);
-            res.addAll(children);
-            nodes.addAll(children);
-        }
-        return nodes;
-    }
-
-    // the text node associated to element node n
-    public static LinkedList<Node> txt(Node n) {
-        System.out.println("func: txt\n");
-        // text node ???
-        return Helper.children(n);
     }
 
     // the list of children of element node n, ordered according to the document order
@@ -63,6 +40,7 @@ public class Helper {
     }
 
     public static Node parent(Node n) {
+
         // attribute node ???
         return n.getParentNode();
     }
@@ -70,6 +48,24 @@ public class Helper {
     // the tag labeling element node n
     public static String tag(Node n) {
         return n.getNodeName();
+    }
+
+    // the text node associated to element node n
+    public static LinkedList<Node> txt(Node n) {
+        System.out.println("func: txt\n");
+        // text node ???
+        return Helper.children(n);
+    }
+
+    public static LinkedList<Node> unique(LinkedList<Node> ori) {
+
+        LinkedList<Node> nodes = new LinkedList<>();
+        for (Node n : ori) {
+            if (!nodes.contains(n)) {
+                nodes.add(n);
+            }
+        }
+        return nodes;
     }
     /*
     [ap]A
