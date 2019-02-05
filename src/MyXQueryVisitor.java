@@ -228,7 +228,6 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
 
     @Override
     public LinkedList<Node> visitFEqual(XQueryParser.FEqualContext ctx) {
-        // this is wrong !
 
         System.out.println("f: eq(=)"); // rule 15
         LinkedList<Node> preStatus = (LinkedList) this.nodes.clone();
@@ -239,7 +238,7 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
         right = visit(ctx.rp(1));
         for (Node ln : left) {
             for (Node rn : right) {
-                System.out.println(ln.toString() + "???" + rn.toString());
+                //System.out.println(ln.toString() + "???" + rn.toString());
                 if (ln.isEqualNode(rn)) {
                     System.out.println("equal!");
                     nodes.add(ln);
@@ -253,7 +252,6 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
 
     @Override
     public LinkedList<Node> visitFSame(XQueryParser.FSameContext ctx) {
-        // this is wrong !
 
         System.out.println("f: is(==)"); // rule 16
         LinkedList<Node> preStatus = this.nodes;

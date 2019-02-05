@@ -26,9 +26,9 @@ public class Main {
         doc("test.xml")/root/actors/actor[@id and @index]
         doc(\"test.xml\")/root/actors/actor[@id], root/singers
          */
-        // still get some problems with visitor rule 15, 16
+        // not so sure about visitor function: 15, 16
 
-        String inputString = "doc(\"j_caesar.xml\")//(ACT,PERSONAE)/TITLE";
+        String inputString = "doc(\"j_caesar.xml\")//ACT[not(./TITLE)==(./TITLE)]/*/SPEECH/../TITLE";
 
         XQueryLexer lexer = new XQueryLexer(CharStreams.fromString(inputString));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
