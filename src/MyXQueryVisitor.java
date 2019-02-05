@@ -3,8 +3,8 @@ import java.util.LinkedList;
 
 // define the meaning of an XPath expression.
 public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
-    /* Finish:
-    1~10, 12, 14
+    /* Not done:
+    11, 15, 16
     */
     private LinkedList<Node> nodes;
 
@@ -144,6 +144,18 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
     }
 
     @Override
+    public LinkedList<Node> visitRpPair(XQueryParser.RpPairContext ctx) {
+        System.out.println(","); // rule 13
+        LinkedList<Node> preStatus = this.nodes;
+        LinkedList<Node> left = visit(ctx.rp(0));
+        this.nodes = preStatus;
+        LinkedList<Node> right = visit(ctx.rp(1));
+        left.addAll(right);
+        this.nodes = left;
+        return this.nodes;
+    }
+
+    @Override
     public LinkedList<Node> visitFRelativePath(XQueryParser.FRelativePathContext ctx) {
         System.out.println("f: rp"); // rule 14
         // filter doesn't change the list!
@@ -151,16 +163,6 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
         LinkedList<Node> filterResult = visit(ctx.rp());
         this.nodes = preStatus;
         return filterResult;
-    }
-    /*
-    @Override
-    public LinkedList<Node> visitFEqual(XQueryParser.FEqualContext ctx) {
-        System.out.println("f: eq(=)"); // rule 14
-        LinkedList<Node> preStatus = this.nodes;
-        LinkedList<Node> left, right;
-        left = visit(ctx.rp(0));
-        right = visit(ctx.rp(1));
-        return this.nodes;
     }
 
     @Override
@@ -170,9 +172,76 @@ public class MyXQueryVisitor extends XQueryBaseVisitor<LinkedList<Node>> {
     }
 
     @Override
-    public LinkedList<Node> visitFNot(XQueryParser.FNotContext ctx) {
-        System.out.println("f: ()"); // rule 20
+    public LinkedList<Node> visitFAnd(XQueryParser.FAndContext ctx) {
+        System.out.println("f: and"); // rule 18
+        if (!visit(ctx.f(0)).isEmpty() && !visit(ctx.f(1)).isEmpty()) {
+            return this.nodes;
+        }
+        return new LinkedList<>();
 
     }
-    */
+
+    @Override
+    public LinkedList<Node> visitFOr(XQueryParser.FOrContext ctx) {
+        System.out.println("f: or"); // rule 19
+        if (!visit(ctx.f(0)).isEmpty() || !visit(ctx.f(1)).isEmpty()) {
+            return this.nodes;
+        }
+        return new LinkedList<>();
+    }
+
+    @Override
+    public LinkedList<Node> visitFNot(XQueryParser.FNotContext ctx) {
+        System.out.println("f: not"); // rule 20
+        if (visit(ctx.f()).isEmpty()) {
+            return this.nodes;
+        }
+        return new LinkedList<>();
+    }
+
+
+    // still get some problems with rule 15, 16
+
+    @Override
+    public LinkedList<Node> visitFEqual(XQueryParser.FEqualContext ctx) {
+        System.out.println("f: eq(=)"); // rule 15
+        LinkedList<Node> preStatus = this.nodes;
+        LinkedList<Node> left, right;
+        LinkedList<Node> ndoes = new LinkedList<>();
+        left = visit(ctx.rp(0));
+        this.nodes = preStatus;
+        right = visit(ctx.rp(1));
+        for (Node ln : left) {
+            for (Node rn : right) {
+                if (ln.isEqualNode(rn)) {
+                    nodes.add(ln);
+                }
+            }
+        }
+
+        return this.nodes;
+    }
+
+
+    @Override
+    public LinkedList<Node> visitFSame(XQueryParser.FSameContext ctx) {
+        System.out.println("f: is(==)"); // rule 16
+        LinkedList<Node> preStatus = this.nodes;
+        LinkedList<Node> left, right;
+        LinkedList<Node> ndoes = new LinkedList<>();
+        left = visit(ctx.rp(0));
+        this.nodes = preStatus;
+        right = visit(ctx.rp(1));
+        for (Node ln : left) {
+            for (Node rn : right) {
+                if (ln.isSameNode(rn)) {
+                    nodes.add(ln);
+                }
+            }
+        }
+
+        return this.nodes;
+    }
+
+
 }

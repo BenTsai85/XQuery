@@ -28,8 +28,10 @@ public class Main {
         doc("test.xml")//*
         doc("test.xml")/root/all/../all/actors
         doc("test.xml")/root/all/actors/actor[@id = "a"] <- exist ? fail ?
+        doc("test.xml")/root/actors/actor[@id and @index]
+        doc(\"test.xml\")/root/actors/actor[@id], root/singers
          */
-        String inputString = "doc(\"test.xml\")/root/all/actors/actor[@id]";
+        String inputString = "doc(\"test.xml\")/root/actors/actor[@id=@index]";
 
         XQueryLexer lexer = new XQueryLexer(CharStreams.fromString(inputString));
         CommonTokenStream tokens = new CommonTokenStream(lexer);
